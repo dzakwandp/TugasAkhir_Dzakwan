@@ -6,6 +6,7 @@
 package tugas_akhir;
 
 import java.awt.Component;
+import java.util.Objects;
 import java.util.Stack;
 import javax.swing.JOptionPane;
 
@@ -118,11 +119,16 @@ public class NewJFrame extends javax.swing.JFrame {
     public void report(){
         Integer skorhm=Integer.parseInt(skor1.getText());
         Integer skoraw=Integer.parseInt(skor2.getText());
+        Integer timhm=(timhome.getSelectedIndex());
+        Integer timaw=(timaway.getSelectedIndex());
         if (skorhm<0){
             frmreport.setText("Anda memasukkan angka yang salah.\n");
         }  
         else if(skoraw<0){
             frmreport.setText("Anda memasukkan angka yang salah.\n");
+        }
+        else if(Objects.equals(timhm, timaw)){
+            frmreport.setText("Tidak bisa memilih tim yang sama");
         }
         else{int jawab=JOptionPane.showConfirmDialog(this, "Apakah Skor sudah benar?");
      switch(jawab){
@@ -134,9 +140,10 @@ public class NewJFrame extends javax.swing.JFrame {
             break;
         case JOptionPane.CANCEL_OPTION:
             break;
-     }}
+     }
         String report=frmreport.getText();
-        daftar.push(report);
+        daftar.push(report);}
+        
     }
     private void btnsubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsubmitActionPerformed
         try{
